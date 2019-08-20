@@ -1,0 +1,56 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOWED_HOSTS	bboard/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+AUTH_PASSWORD_VALIDATORS	bboard/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AUTH_USER_MODEL	bboard/settings.py	/^AUTH_USER_MODEL = 'main.AdvUser'$/;"	v
+AdvUser	main/models.py	/^class AdvUser(AbstractUser):$/;"	c
+BASE_DIR	bboard/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+BBLoginView	main/views.py	/^class BBLoginView(LoginView):$/;"	c
+BBLogoutView	main/views.py	/^class BBLogoutView(LoginRequiredMixin,LogoutView):$/;"	c
+ChangeUserInfoForm	main/forms.py	/^class ChangeUserInfoForm(forms.ModelForm):$/;"	c
+DATABASES	bboard/settings.py	/^DATABASES = {$/;"	v
+DEBUG	bboard/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	bboard/settings.py	/^INSTALLED_APPS = [$/;"	v
+LANGUAGE_CODE	bboard/settings.py	/^LANGUAGE_CODE = 'ru-ru'$/;"	v
+MIDDLEWARE	bboard/settings.py	/^MIDDLEWARE = [$/;"	v
+MainConfig	main/apps.py	/^class MainConfig(AppConfig):$/;"	c
+Meta	main/forms.py	/^    class Meta:$/;"	c	class:ChangeUserInfoForm
+Meta	main/models.py	/^    class Meta(AbstractUser.Meta):$/;"	c	class:AdvUser
+Migration	main/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+ROOT_URLCONF	bboard/settings.py	/^ROOT_URLCONF = 'bboard.urls'$/;"	v
+SECRET_KEY	bboard/settings.py	/^SECRET_KEY = '12v()s^)adw7e$71wlq$=paq1g=^k2gcf!qx(1vca3qu$qsvno'$/;"	v
+STATIC_URL	bboard/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+TEMPLATES	bboard/settings.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	bboard/settings.py	/^TIME_ZONE = 'UTC'$/;"	v
+USE_I18N	bboard/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	bboard/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	bboard/settings.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	bboard/settings.py	/^WSGI_APPLICATION = 'bboard.wsgi.application'$/;"	v
+app_name	main/urls.py	/^app_name = 'main'$/;"	v
+application	bboard/wsgi.py	/^application = get_wsgi_application()$/;"	v
+dependencies	main/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+email	main/forms.py	/^    email = forms.EmailField(required=True, label='Адрес электронной почты')$/;"	v	class:ChangeUserInfoForm
+fields	main/forms.py	/^        fields = ('username', 'email', 'first_name', 'last_name', 'send_messages')$/;"	v	class:ChangeUserInfoForm.Meta
+fields	main/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+index	main/views.py	/^def index(request):$/;"	f
+initial	main/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+is_activated	main/models.py	/^    is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Прошел активацию?')$/;"	v	class:AdvUser
+main	manage.py	/^def main():$/;"	f
+managers	main/migrations/0001_initial.py	/^            managers=[$/;"	v	class:Migration
+model	main/forms.py	/^        model = AdvUser$/;"	v	class:ChangeUserInfoForm.Meta
+name	main/apps.py	/^    name = 'main'$/;"	v	class:MainConfig
+name	main/migrations/0001_initial.py	/^            name='AdvUser',$/;"	v	class:Migration
+operations	main/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+options	main/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
+other_page	main/views.py	/^def other_page(request, page):$/;"	f
+profile	main/views.py	/^def profile(request):$/;"	f
+send_messages	main/models.py	/^    send_messages = models.BooleanField(default=True, verbose_name='Слать оповещения о новых комментариях?')$/;"	v	class:AdvUser
+template_name	main/views.py	/^    template_name = 'main\/login.html'$/;"	v	class:BBLoginView
+template_name	main/views.py	/^    template_name = 'main\/logout.html'$/;"	v	class:BBLogoutView
+urlpatterns	bboard/urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	main/urls.py	/^urlpatterns = [$/;"	v
+verbose_name	main/apps.py	/^    verbose_name = 'Доска объявлений'$/;"	v	class:MainConfig
