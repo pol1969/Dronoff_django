@@ -1,4 +1,4 @@
-{% load bootstrap4 %}
+{% load bootstrap4 %} 
 
 {% load static %}
 
@@ -34,7 +34,7 @@
 
             <ul class="col nav justify-content-end border">
 
-                <li class="nav-item"><a class="nav-link" href="#">
+                <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">
 
                 Регистрация</a></li>
 
@@ -44,7 +44,7 @@
 
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"
 
-                    href="#" role="button" aria-haspopup="true"
+                    href=/"#" role="button" aria-haspopup="true"
 
                     aria-expanded="false">Профиль</a>
 
@@ -56,7 +56,7 @@
 
 			Изменить личные данные</a>
 
-                        <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{% url 'main:password_change' %}">
 
                         Изменить пароль</a>
 

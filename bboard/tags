@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+088|	Session.vim	/^normal! 088|$/;"	m
 ALLOWED_HOSTS	bboard/settings.py	/^ALLOWED_HOSTS = []$/;"	v
 AUTH_PASSWORD_VALIDATORS	bboard/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
 AUTH_USER_MODEL	bboard/settings.py	/^AUTH_USER_MODEL = 'main.AdvUser'$/;"	v
@@ -11,7 +12,9 @@ AdvUser	main/models.py	/^class AdvUser(AbstractUser):$/;"	c
 BASE_DIR	bboard/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
 BBLoginView	main/views.py	/^class BBLoginView(LoginView):$/;"	c
 BBLogoutView	main/views.py	/^class BBLogoutView(LoginRequiredMixin,LogoutView):$/;"	c
+BBPasswordChangeView	main/views.py	/^class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):$/;"	c
 ChangeUserInfoForm	main/forms.py	/^class ChangeUserInfoForm(forms.ModelForm):$/;"	c
+ChangeUserInfoView	main/views.py	/^class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):$/;"	c
 DATABASES	bboard/settings.py	/^DATABASES = {$/;"	v
 DEBUG	bboard/settings.py	/^DEBUG = True$/;"	v
 INSTALLED_APPS	bboard/settings.py	/^INSTALLED_APPS = [$/;"	v
@@ -19,11 +22,16 @@ LANGUAGE_CODE	bboard/settings.py	/^LANGUAGE_CODE = 'ru-ru'$/;"	v
 MIDDLEWARE	bboard/settings.py	/^MIDDLEWARE = [$/;"	v
 MainConfig	main/apps.py	/^class MainConfig(AppConfig):$/;"	c
 Meta	main/forms.py	/^    class Meta:$/;"	c	class:ChangeUserInfoForm
+Meta	main/forms.py	/^    class Meta:$/;"	c	class:RegisterUserForm
 Meta	main/models.py	/^    class Meta(AbstractUser.Meta):$/;"	c	class:AdvUser
 Migration	main/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
 ROOT_URLCONF	bboard/settings.py	/^ROOT_URLCONF = 'bboard.urls'$/;"	v
+RegisterDoneView	main/views.py	/^class RegisterDoneView(TemplateView):$/;"	c
+RegisterUserForm	main/forms.py	/^class RegisterUserForm(forms.ModelForm):$/;"	c
+RegisterUserView	main/views.py	/^class RegisterUserView(CreateView):$/;"	c
 SECRET_KEY	bboard/settings.py	/^SECRET_KEY = '12v()s^)adw7e$71wlq$=paq1g=^k2gcf!qx(1vca3qu$qsvno'$/;"	v
 STATIC_URL	bboard/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 TEMPLATES	bboard/settings.py	/^TEMPLATES = [$/;"	v
 TIME_ZONE	bboard/settings.py	/^TIME_ZONE = 'UTC'$/;"	v
 USE_I18N	bboard/settings.py	/^USE_I18N = True$/;"	v
@@ -32,25 +40,61 @@ USE_TZ	bboard/settings.py	/^USE_TZ = True$/;"	v
 WSGI_APPLICATION	bboard/settings.py	/^WSGI_APPLICATION = 'bboard.wsgi.application'$/;"	v
 app_name	main/urls.py	/^app_name = 'main'$/;"	v
 application	bboard/wsgi.py	/^application = get_wsgi_application()$/;"	v
+clean	main/forms.py	/^    def clean(self):$/;"	m	class:RegisterUserForm
+clean_password1	main/forms.py	/^    def clean_password1(self):$/;"	m	class:RegisterUserForm
 dependencies	main/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dispatch	main/views.py	/^    def dispatch(self,request,*args, **kwargs):$/;"	m	class:ChangeUserInfoView
 email	main/forms.py	/^    email = forms.EmailField(required=True, label='Адрес электронной почты')$/;"	v	class:ChangeUserInfoForm
+email	main/forms.py	/^    email = forms.EmailField(required=True,label='Адрес электронной почты')$/;"	v	class:RegisterUserForm
 fields	main/forms.py	/^        fields = ('username', 'email', 'first_name', 'last_name', 'send_messages')$/;"	v	class:ChangeUserInfoForm.Meta
+fields	main/forms.py	/^        fields = ('username', 'email','password1','password2','first_name','last_name','send_messages')$/;"	v	class:RegisterUserForm.Meta
 fields	main/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+form_class	main/views.py	/^    form_class = ChangeUserInfoForm$/;"	v	class:ChangeUserInfoView
+form_class	main/views.py	/^    form_class = RegisterUserForm$/;"	v	class:RegisterUserView
+get_object	main/views.py	/^    def get_object(self, queryset=None):$/;"	m	class:ChangeUserInfoView
+help_text	main/forms.py	/^            help_text='Введите тот же самый пароль еще раз для проверки')$/;"	v	class:RegisterUserForm
+help_text	main/forms.py	/^            help_text=password_validation.password_validators_help_text_html())$/;"	v	class:RegisterUserForm
 index	main/views.py	/^def index(request):$/;"	f
 initial	main/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 is_activated	main/models.py	/^    is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Прошел активацию?')$/;"	v	class:AdvUser
 main	manage.py	/^def main():$/;"	f
 managers	main/migrations/0001_initial.py	/^            managers=[$/;"	v	class:Migration
 model	main/forms.py	/^        model = AdvUser$/;"	v	class:ChangeUserInfoForm.Meta
+model	main/views.py	/^    model = AdvUser$/;"	v	class:ChangeUserInfoView
+model	main/views.py	/^    model = AdvUser$/;"	v	class:RegisterUserView
 name	main/apps.py	/^    name = 'main'$/;"	v	class:MainConfig
 name	main/migrations/0001_initial.py	/^            name='AdvUser',$/;"	v	class:Migration
 operations	main/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
 options	main/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
 other_page	main/views.py	/^def other_page(request, page):$/;"	f
+password1	main/forms.py	/^    password1 = forms.CharField(label='Пароль',$/;"	v	class:RegisterUserForm
+password2	main/forms.py	/^    password2 = forms.CharField(label='Пароль (повторно)',$/;"	v	class:RegisterUserForm
 profile	main/views.py	/^def profile(request):$/;"	f
+s:l	Session.vim	/^let s:l = 37 - ((15 * winheight(0) + 15) \/ 31)$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+save	main/forms.py	/^    def save(self, commit=True):$/;"	m	class:RegisterUserForm
+send_activation_notification	main/utilities.py	/^def send_activation_notification(user):$/;"	f
 send_messages	main/models.py	/^    send_messages = models.BooleanField(default=True, verbose_name='Слать оповещения о новых комментариях?')$/;"	v	class:AdvUser
+signer	main/utilities.py	/^signer = Signer()$/;"	v
+success_message	main/views.py	/^    success_message = 'Личные данные пользователя изменены'    $/;"	v	class:ChangeUserInfoView
+success_message	main/views.py	/^    success_message = 'Пароль успешно изменен'$/;"	v	class:BBPasswordChangeView
+success_url	main/views.py	/^    success_url = reverse_lazy('main:profile')$/;"	v	class:BBPasswordChangeView
+success_url	main/views.py	/^    success_url = reverse_lazy('main:profile')$/;"	v	class:ChangeUserInfoView
+success_url	main/views.py	/^    success_url = reverse_lazy('main:register_done')$/;"	v	class:RegisterUserView
+template_name	main/views.py	/^    template_name = 'main\/change_user_info.html'$/;"	v	class:ChangeUserInfoView
 template_name	main/views.py	/^    template_name = 'main\/login.html'$/;"	v	class:BBLoginView
 template_name	main/views.py	/^    template_name = 'main\/logout.html'$/;"	v	class:BBLogoutView
+template_name	main/views.py	/^    template_name = 'main\/password_change.html'$/;"	v	class:BBPasswordChangeView
+template_name	main/views.py	/^    template_name = 'main\/register_done.html'$/;"	v	class:RegisterDoneView
+template_name	main/views.py	/^    template_name = 'main\/register_user.html'$/;"	v	class:RegisterUserView
 urlpatterns	bboard/urls.py	/^urlpatterns = [$/;"	v
 urlpatterns	main/urls.py	/^urlpatterns = [$/;"	v
+user_activate	main/views.py	/^def user_activate(request, sign):$/;"	f
+user_regisrated	main/models.py	/^user_regisrated = Signal(providing_args=['instance'])$/;"	v
+user_regisrated_dispatcher	main/models.py	/^def user_regisrated_dispatcher(sender, **kwargs):$/;"	f
 verbose_name	main/apps.py	/^    verbose_name = 'Доска объявлений'$/;"	v	class:MainConfig
+widget	main/forms.py	/^            widget=forms.PasswordInput,$/;"	v	class:RegisterUserForm
+zo	Session.vim	/^normal! zo$/;"	m
+zt	Session.vim	/^normal! zt$/;"	m
