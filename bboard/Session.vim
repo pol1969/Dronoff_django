@@ -7,22 +7,25 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +37 bboard/main/templates/layout/basic.html
+badd +69 bboard/main/templates/layout/basic.html
 badd +1 bboard/main/templates/main/register_user.html
 badd +1 bboard/main/templates/main/register_done.html
 badd +21 bboard/main/models.py
 badd +15 bboard/main/utilities.py
 badd +1 bboard/main/templates/main/email/activation_letter_subject.txt
 badd +7 bboard/main/templates/main/email/activation_letter_body.txt
-badd +9 bboard/main/views.py
+badd +108 bboard/main/views.py
 badd +3 bboard/main/urls.py
 badd +1 bboard/main/templates/main/activation_done.html
 badd +8 bboard/main/templates/main/bad_signature.html
 badd +12 bboard/main/templates/main/user_is_activated.html
 badd +2 bboard/main/forms.py
+badd +1 bboard/main/templates/main/change_user_info.html
+badd +12 bboard/main/templates/main/delete_user.html
+badd +10 bboard/main/admin.py
 argglobal
 silent! argdel *
-edit bboard
+edit bboard/main/admin.py
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -37,11 +40,17 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 2 - ((1 * winheight(0) + 15) / 31)
+7
+normal! zo
+8
+normal! zo
+9
+normal! zo
+let s:l = 10 - ((9 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+10
 normal! 0
 lcd ~/bbc/bboard
 tabnext 1

@@ -9,6 +9,7 @@ ALLOWED_HOSTS	bboard/settings.py	/^ALLOWED_HOSTS = []$/;"	v
 AUTH_PASSWORD_VALIDATORS	bboard/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
 AUTH_USER_MODEL	bboard/settings.py	/^AUTH_USER_MODEL = 'main.AdvUser'$/;"	v
 AdvUser	main/models.py	/^class AdvUser(AbstractUser):$/;"	c
+AdvUserAdmin	main/admin.py	/^class AdvUserAdmin(admin.ModelAdmin):$/;"	c
 BASE_DIR	bboard/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
 BBLoginView	main/views.py	/^class BBLoginView(LoginView):$/;"	c
 BBLogoutView	main/views.py	/^class BBLogoutView(LoginRequiredMixin,LogoutView):$/;"	c
@@ -26,6 +27,7 @@ Meta	main/forms.py	/^    class Meta:$/;"	c	class:ChangeUserInfoForm
 Meta	main/forms.py	/^    class Meta:$/;"	c	class:RegisterUserForm
 Meta	main/models.py	/^    class Meta(AbstractUser.Meta):$/;"	c	class:AdvUser
 Migration	main/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+NonactivatedFilter	main/admin.py	/^class NonactivatedFilter(admin.SimpleListFilter):$/;"	c
 ROOT_URLCONF	bboard/settings.py	/^ROOT_URLCONF = 'bboard.urls'$/;"	v
 RegisterDoneView	main/views.py	/^class RegisterDoneView(TemplateView):$/;"	c
 RegisterUserForm	main/forms.py	/^class RegisterUserForm(forms.ModelForm):$/;"	c
@@ -39,27 +41,32 @@ USE_I18N	bboard/settings.py	/^USE_I18N = True$/;"	v
 USE_L10N	bboard/settings.py	/^USE_L10N = True$/;"	v
 USE_TZ	bboard/settings.py	/^USE_TZ = True$/;"	v
 WSGI_APPLICATION	bboard/settings.py	/^WSGI_APPLICATION = 'bboard.wsgi.application'$/;"	v
+actions	main/admin.py	/^    actions = (send_activation_notifications,)$/;"	v	class:AdvUserAdmin
 app_name	main/urls.py	/^app_name = 'main'$/;"	v
 application	bboard/wsgi.py	/^application = get_wsgi_application()$/;"	v
 clean	main/forms.py	/^    def clean(self):$/;"	m	class:RegisterUserForm
 clean_password1	main/forms.py	/^    def clean_password1(self):$/;"	m	class:RegisterUserForm
 dependencies	main/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dispatch	main/views.py	/^    def dispatch(self, request, *args,**kwargs):$/;"	m	class:DeleteUserView
 dispatch	main/views.py	/^    def dispatch(self,request,*args, **kwargs):$/;"	m	class:ChangeUserInfoView
-dispatch	main/views.py	/^   def dispatch(self, request, *args,**kwargs):$/;"	m	class:DeleteUserView
 email	main/forms.py	/^    email = forms.EmailField(required=True, label='Адрес электронной почты')$/;"	v	class:ChangeUserInfoForm
 email	main/forms.py	/^    email = forms.EmailField(required=True,label='Адрес электронной почты')$/;"	v	class:RegisterUserForm
 fields	main/forms.py	/^        fields = ('username', 'email', 'first_name', 'last_name', 'send_messages')$/;"	v	class:ChangeUserInfoForm.Meta
 fields	main/forms.py	/^        fields = ('username', 'email','password1','password2','first_name','last_name','send_messages')$/;"	v	class:RegisterUserForm.Meta
 fields	main/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+filds	main/admin.py	/^    filds = (('username','email'),('first_name','last_name'),$/;"	v	class:AdvUserAdmin
 form_class	main/views.py	/^    form_class = ChangeUserInfoForm$/;"	v	class:ChangeUserInfoView
 form_class	main/views.py	/^    form_class = RegisterUserForm$/;"	v	class:RegisterUserView
 get_object	main/views.py	/^    def get_object(self, queryset=None):$/;"	m	class:ChangeUserInfoView
-get_object	main/views.py	/^   def get_object(self, queryset=None):$/;"	m	class:DeleteUserView
+get_object	main/views.py	/^    def get_object(self, queryset=None):$/;"	m	class:DeleteUserView
 help_text	main/forms.py	/^            help_text='Введите тот же самый пароль еще раз для проверки')$/;"	v	class:RegisterUserForm
 help_text	main/forms.py	/^            help_text=password_validation.password_validators_help_text_html())$/;"	v	class:RegisterUserForm
 index	main/views.py	/^def index(request):$/;"	f
 initial	main/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 is_activated	main/models.py	/^    is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Прошел активацию?')$/;"	v	class:AdvUser
+list_display	main/admin.py	/^    list_display = ('__str__', 'is_activated', 'date_joined')$/;"	v	class:AdvUserAdmin
+list_filter	main/admin.py	/^    list_filter = (NonactivatedFilter,)$/;"	v	class:AdvUserAdmin
+lookups	main/admin.py	/^   def lookups(self, request, modeladmin):$/;"	m	class:NonactivatedFilter
 main	manage.py	/^def main():$/;"	f
 managers	main/migrations/0001_initial.py	/^            managers=[$/;"	v	class:Migration
 model	main/forms.py	/^        model = AdvUser$/;"	v	class:ChangeUserInfoForm.Meta
@@ -72,16 +79,21 @@ name	main/migrations/0001_initial.py	/^            name='AdvUser',$/;"	v	class:M
 operations	main/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
 options	main/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
 other_page	main/views.py	/^def other_page(request, page):$/;"	f
+parameter_name	main/admin.py	/^   parameter_name = 'actstate'$/;"	v	class:NonactivatedFilter
 password1	main/forms.py	/^    password1 = forms.CharField(label='Пароль',$/;"	v	class:RegisterUserForm
 password2	main/forms.py	/^    password2 = forms.CharField(label='Пароль (повторно)',$/;"	v	class:RegisterUserForm
-post	main/views.py	/^   def post(self, request,*args, **kwargs):$/;"	m	class:DeleteUserView
+post	main/views.py	/^    def post(self, request,*args, **kwargs):$/;"	m	class:DeleteUserView
 profile	main/views.py	/^def profile(request):$/;"	f
-s:l	Session.vim	/^let s:l = 2 - ((1 * winheight(0) + 15) \/ 31)$/;"	v
+queryset	main/admin.py	/^def queryset(self, request, queryset):$/;"	f
+readonly_fields	main/admin.py	/^    readonly_fields = ('last_login', 'date_joined')$/;"	v	class:AdvUserAdmin
+s:l	Session.vim	/^let s:l = 10 - ((9 * winheight(0) + 15) \/ 31)$/;"	v
 s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
 s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 save	main/forms.py	/^    def save(self, commit=True):$/;"	m	class:RegisterUserForm
+search_fields	main/admin.py	/^    search_fields = ('username', 'email', 'first_name', 'last_name')$/;"	v	class:AdvUserAdmin
 send_activation_notification	main/utilities.py	/^def send_activation_notification(user):$/;"	f
+send_activation_notifications	main/admin.py	/^def send_activation_notifications(modeladmin,request, queryset):$/;"	f
 send_messages	main/models.py	/^    send_messages = models.BooleanField(default=True, verbose_name='Слать оповещения о новых комментариях?')$/;"	v	class:AdvUser
 signer	main/utilities.py	/^signer = Signer()$/;"	v
 success_message	main/views.py	/^    success_message = 'Личные данные пользователя изменены'    $/;"	v	class:ChangeUserInfoView
@@ -97,6 +109,7 @@ template_name	main/views.py	/^    template_name = 'main\/logout.html'$/;"	v	clas
 template_name	main/views.py	/^    template_name = 'main\/password_change.html'$/;"	v	class:BBPasswordChangeView
 template_name	main/views.py	/^    template_name = 'main\/register_done.html'$/;"	v	class:RegisterDoneView
 template_name	main/views.py	/^    template_name = 'main\/register_user.html'$/;"	v	class:RegisterUserView
+title	main/admin.py	/^   title = 'Прошли активацию?'$/;"	v	class:NonactivatedFilter
 urlpatterns	bboard/urls.py	/^urlpatterns = [$/;"	v
 urlpatterns	main/urls.py	/^urlpatterns = [$/;"	v
 user_activate	main/views.py	/^def user_activate(request, sign):$/;"	f
@@ -104,4 +117,5 @@ user_registrated	main/models.py	/^user_registrated = Signal(providing_args=['ins
 user_registrated_dispatcher	main/models.py	/^def user_registrated_dispatcher(sender, **kwargs):$/;"	f
 verbose_name	main/apps.py	/^    verbose_name = 'Доска объявлений'$/;"	v	class:MainConfig
 widget	main/forms.py	/^            widget=forms.PasswordInput,$/;"	v	class:RegisterUserForm
+zo	Session.vim	/^normal! zo$/;"	m
 zt	Session.vim	/^normal! zt$/;"	m
